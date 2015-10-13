@@ -69,10 +69,14 @@ module.exports = function (grunt) {
 
         // Compile less files
         less: {
-            serve: {
-
+            directives: {
                 files: {
-                    '<%= tiger.app %>/styles/tiger-ui.css': '<%= tiger.app %>/less/tiger-ui.less',
+                    '<%= tiger.app %>/scripts/directives/tiger-router-tabs/tiger-router-tabs.css': '<%= tiger.app %>/less/directives/tiger-router-tabs.less'
+                }
+            },
+            serve: {
+                files: {
+                    '<%= tiger.app %>/styles/tiger-ui.css': '<%= tiger.app %>/less/tiger-ui.less'
                 }
             }
         }

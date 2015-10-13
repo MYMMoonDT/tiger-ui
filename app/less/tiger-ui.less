@@ -1,0 +1,242 @@
+@import "variables";
+@import "libs";
+
+html {
+  background-color: #fff;
+}
+
+body {
+  font-family: "Microsoft Yahei", "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  background-color: transparent;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+}
+
+a {
+  color: #363f44;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover,
+a:focus {
+  color: #141719;
+  text-decoration: none;
+}
+
+label {
+  font-weight: normal;
+}
+
+small,
+.small {
+  font-size: 13px;
+}
+
+.badge {
+  font-size: 14px;
+  padding: 4px 7px 3px 7px;
+}
+
+// layout
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.tiger-app {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  padding-top: 75px;
+}
+
+.tiger-app:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+  width: inherit;
+  background-color: #fff;
+  border: inherit;
+  content: "";
+}
+
+.tiger-app-aside {
+  float: left;
+  width: 200px;
+  .aside-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    overflow: hidden;
+    .user-section {
+      a {
+        color: @font-white;
+      }
+    }
+    .nav-section {
+      position: absolute;
+      left: 0;
+      top: 232px;
+      width: 200px;
+      height: 100%;
+      margin-top: -232px;
+      z-index: -1;
+      padding: 232px 0 48px;
+      .nav-wrapper {
+        height: 100%;
+      }
+    }
+    .footer-section {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 48px;
+      width: 200px;
+      background-color: @bg-blue-dark;
+      a {
+        color: @font-blue-light;
+        line-height: 48px;
+        i.fa {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.nav-wrapper {
+  ul.nav {
+    >li {
+      &.line {
+        background-color: @bg-blue-lighter;
+      }
+      &.active {
+        >a {
+          background-color: @bg-blue-dark;
+        }
+      }
+      >a {
+        color: @font-white;
+        padding-left: 50px;
+        &:hover {
+          background-color: @bg-blue-light;
+        }
+        &:focus {
+          background-color: @bg-blue-dark;
+        }
+      }
+      >span {
+        display: inline-block;
+        color: @bg-blue-lighter;
+        padding: 10px 15px 10px 25px;
+      }
+    }
+  }
+}
+
+.tiger-app-aside:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  width: inherit;
+  background-color: inherit;
+  border: inherit;
+  content: "";
+}
+
+.tiger-app-content {
+  margin-left: 200px;
+  height: 100%;
+}
+
+.tiger-app-content:before,
+.tiger-app-content:after {
+  display: table;
+  content: " ";
+}
+
+.tiger-app-content:after {
+  clear: both;
+}
+
+.tiger-app-content-body {
+  float: left;
+  width: 100%;
+  padding-bottom: 75px;
+}
+
+.tiger-app-tabs {
+  position: fixed;
+  top: 0;
+  height: 75px;
+  width: 100%;
+  .router-tabs-section {
+    margin-left: 200px;
+    height: 75px;
+    background-color: @bg-grey;
+  }
+}
+
+// icons
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+
+  &.icon-close {
+    .bg-image('../images/icons/icon-close.png');
+    .bg-size(16px, 16px);
+    .bg-repeat();
+    .bg-position();
+  }
+
+  &.icon-check-blue {
+    .bg-image('../images/icons/icon-check-blue.png');
+    .bg-size(16px, 16px);
+    .bg-repeat();
+    .bg-position();
+  }
+
+  &.icon-close-red {
+    .bg-image('../images/icons/icon-close-red.png');
+    .bg-size(16px, 16px);
+    .bg-repeat();
+    .bg-position();
+  }
+}
+
+.active {
+  .icon {
+    &.icon-close {
+      .bg-image('../images/icons/icon-close-active.png');
+    }
+  }
+}

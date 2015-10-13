@@ -1,0 +1,97 @@
+@import "../variables";
+@import "../libs";
+
+.tiger-router-tabs-wrapper {
+  padding-top: 30px;
+  .left-angle, .right-angle, .down-angle {
+    border-top: 1px solid @border-grey;
+    border-left: 1px solid @border-grey;
+    border-right: 1px solid @border-grey;
+    line-height: 20px;
+    padding: 12px 16px;
+    font-size: 18px;
+    background-color: @bg-white;
+    border-radius: 4px 4px 0 0;
+  }
+  .left-angle, .down-angle {
+    float: left;
+    margin-left: 10px;
+  }
+  .right-angle {
+    float: right;
+    margin-right: 10px;
+  }
+  .down-angle-wrapper {
+    float: left;
+    .dropdown-menu {
+      left: auto;
+      right: 0;
+      box-shadow: none;
+      >li {
+        >a {
+          line-height: 20px;
+          padding: 5px 15px;
+          .icon-empty, .icon-close-red, .icon-check-blue {
+            margin-right: 10px;
+            vertical-align: middle;
+            margin-top: -2px;
+          }
+          .icon-close {
+            float: right;
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+  }
+  .down-angle {
+    margin-left: 5px;
+  }
+
+  .tiger-router-tabs-slider {
+    float: left;
+    overflow: hidden;
+    margin-left: 5px;
+  }
+
+  .tiger-router-tabs {
+    float: left;
+    white-space:nowrap;
+    .tiger-router-tab {
+      display: inline-block;
+      margin-right: 5px;
+      position: relative;
+      &.first {
+        a {
+          padding: 12px 30px;
+        }
+      }
+      &.last {
+        margin-right: 0;
+      }
+      &.active {
+        a {
+          border-top: 1px solid @border-blue;
+          border-left: 1px solid @border-blue;
+          border-right: 1px solid @border-blue;
+          background-color: @bg-blue;
+          color: @font-white;
+        }
+      }
+      a {
+        border-top: 1px solid @border-grey;
+        border-left: 1px solid @border-grey;
+        border-right: 1px solid @border-grey;
+        line-height: 20px;
+        padding: 12px 10px 12px 30px;
+        background-color: @bg-white;
+        border-radius: 4px 4px 0 0;
+        .icon-close {
+          float: right;
+          margin-left: 22px;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+}

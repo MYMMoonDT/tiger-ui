@@ -1,7 +1,10 @@
 'use strict';
 
-angular
-  .module('tigerUI', [
+angular.module('tigerUI', [
+    'ngStorage',
     'ui.router',
-    'ui.bootstrap'
-  ]);
+    'ui.bootstrap',
+    'ui.jq',
+    'ui.load',
+    'oc.lazyLoad'
+]);
