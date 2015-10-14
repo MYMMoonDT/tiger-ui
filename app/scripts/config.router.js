@@ -16,7 +16,7 @@ angular.module('tigerUI')
                     url: '/app',
                     templateUrl: 'tpl/app.html',
                     resolve: {
-                        deps: ['$ocLazyLoad',
+                        routerTabs: ['$ocLazyLoad',
                             function( $ocLazyLoad ){
                                 return $ocLazyLoad.load('tigerRouterTabs');
                             }]
@@ -32,10 +32,37 @@ angular.module('tigerUI')
                     url: '/button',
                     templateUrl: 'tpl/button.html'
                 })
+                .state('app.link', {
+                    label: '链接',
+                    url: '/link',
+                    templateUrl: 'tpl/link.html'
+                })
+                .state('app.tab', {
+                    label: '标签',
+                    url: '/tab',
+                    templateUrl: 'tpl/tab.html',
+                    resolve: {
+                        deps: ['routerTabs', '$ocLazyLoad',
+                            function( routerTabs, $ocLazyLoad ){
+                                return $ocLazyLoad.load('scripts/controllers/tab.js');
+                            }]
+                    }
+                })
                 .state('app.form', {
                     label: '表单',
                     url: '/form',
-                    templateUrl: 'tpl/form.html'
+                    templateUrl: 'tpl/form.html',
+                    resolve: {
+                        deps: ['routerTabs', '$ocLazyLoad',
+                            function( routerTabs, $ocLazyLoad ){
+                                return $ocLazyLoad.load([
+                                    'ui.select',
+                                    'tigerDatePicker',
+                                    'ngDialog',
+                                    'scripts/controllers/form.js'
+                                ]);
+                            }]
+                    }
                 })
                 .state('app.list', {
                     label: '列表',
@@ -45,43 +72,13 @@ angular.module('tigerUI')
                 .state('app.other', {
                     label: '其他',
                     url: '/other',
-                    templateUrl: 'tpl/other.html'
-                })
-
-                .state('app.test1', {
-                    label: '测试1',
-                    url: '/test1',
-                    templateUrl: 'tpl/test1.html'
-                })
-                .state('app.test2', {
-                    label: '测试2',
-                    url: '/test2',
-                    templateUrl: 'tpl/test2.html'
-                })
-                .state('app.test3', {
-                    label: '测试3',
-                    url: '/test3',
-                    templateUrl: 'tpl/test3.html'
-                })
-                .state('app.test4', {
-                    label: '测试4',
-                    url: '/test4',
-                    templateUrl: 'tpl/test4.html'
-                })
-                .state('app.test5', {
-                    label: '测试5',
-                    url: '/test5',
-                    templateUrl: 'tpl/test5.html'
-                })
-                .state('app.test6', {
-                    label: '测试6',
-                    url: '/test6',
-                    templateUrl: 'tpl/test6.html'
-                })
-                .state('app.test7', {
-                    label: '测试7',
-                    url: '/test7',
-                    templateUrl: 'tpl/test7.html'
-                })
+                    templateUrl: 'tpl/other.html',
+                    resolve: {
+                        deps: ['routerTabs', '$ocLazyLoad',
+                            function( routerTabs, $ocLazyLoad ){
+                                return $ocLazyLoad.load('scripts/controllers/other.js');
+                            }]
+                    }
+                });
         }
     ]);

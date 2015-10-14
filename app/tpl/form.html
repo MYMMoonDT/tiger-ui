@@ -1,1 +1,191 @@
-FORM
+<div ng-controller="FormController">
+    <div class="padder-md">
+        <h1 class="page-title">表单</h1>
+    </div>
+    <div class="padder-md">
+        <h5>基本表单</h5>
+        <form>
+            <table>
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="name">*客户姓名:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control w-sm" id="name" name="name">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-l-md m-r-sm" for="gender">称谓:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <ui-select ng-model="gender.selected" theme="bootstrap" class="w-xs">
+                                <ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
+                                <ui-select-choices repeat="item in genderList | filter: $select.search">
+                                    <div ng-bind-html="item.name | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="name">*手机号码:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control w-sm" id="phone" name="phone">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="identify">*身份证:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control w-sm" id="identify" name="identify">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="email">电子邮箱:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="email" class="form-control w-sm" id="email" name="email">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="birthday">生日:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <tiger-datepicker class="w-sm" ng-model="birthday"></tiger-datepicker>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="qq">QQ:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control w-sm" id="qq" name="qq">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="wechat">微信:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control w-sm" id="wechat" name="wechat">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group text-r">
+                            <label class="m-r-sm" for="address">地址:</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control w-sm" id="address" name="address">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="padder padder-v">
+                        <button class="btn btn-primary tiger-btn tiger-btn-primary tiger-btn-min-width m-r-sm">确定</button>
+                        <button class="btn btn-default tiger-btn tiger-btn-default tiger-btn-min-width">取消</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <h5>Panel中表单</h5>
+        <div class="panel panel-default panel-blue" style="width: 480px;">
+            <div class="panel-body">
+                <form>
+                    <table class="w-full">
+                        <tr>
+                            <td style="padding-bottom: 5px;">
+                                <label for="name">发送给</label>
+                                <a href="javascript:void(0);" class="tiger-link tiger-link-primary pull-right" ng-click="selectCustomer()">选择联系人</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" name="name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="padder-v-xs" style="padding-top: 10px;">
+                                <label for="name">短信内容</label>
+                                <a href="javascript:void(0);" class="tiger-link tiger-link-primary pull-right" ng-click="selectMsgTpl()">选择短信模板</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="form-control" name="content">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox m-t" style="margin-bottom: 0;">
+                                    <label class="i-checks">
+                                        <input type="checkbox" ng-click="selectMsgTime()" ng-model="isSelectMsgTime">
+                                        <i></i>
+                                        定时发送
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="checkbox" style="margin-bottom: 0;">
+                                    <label class="i-checks">
+                                        <input type="checkbox" value="">
+                                        <i></i>
+                                        同意<a href="javascript:void(0);" class="tiger-link tiger-link-primary">《短信发送条款》</a>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

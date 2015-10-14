@@ -1,0 +1,616 @@
+// badge
+.badge {
+  font-size: 10px;
+  padding: 3px 6px;
+}
+
+// title
+
+h1.page-title {
+  font-size: 22px;
+  line-height: 1;
+  margin: 20px 0;
+  padding-left: 15px;
+  color: @font-blue;
+  border-left: 4px solid @border-blue;
+}
+
+// layout
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.tiger-app {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  padding-top: 55px;
+}
+
+.tiger-app:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  display: block;
+  width: inherit;
+  background-color: #fff;
+  border: inherit;
+  content: "";
+}
+
+.tiger-app-aside {
+  float: left;
+  width: 175px;
+  .aside-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 175px;
+    overflow: hidden;
+    .user-section {
+      a {
+        color: @font-white;
+      }
+    }
+    .nav-section {
+      position: absolute;
+      left: 0;
+      top: 190px;
+      width: 175px;
+      height: 100%;
+      margin-top: -190px;
+      z-index: -1;
+      padding: 190px 0 40px;
+      .nav-wrapper {
+        height: 100%;
+      }
+    }
+    .footer-section {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 40px;
+      width: 175px;
+      background-color: @bg-blue-dark;
+      a {
+        color: @font-blue-light;
+        line-height: 40px;
+        i.fa {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+.nav-wrapper {
+  ul.nav {
+    >li {
+      &.line {
+        background-color: @bg-blue-lighter;
+      }
+      &.active {
+        >a {
+          background-color: @bg-blue-dark;
+        }
+      }
+      >a {
+        color: @font-white;
+        padding: 7px 15px 7px 45px;
+        &:hover {
+          background-color: @bg-blue-light;
+        }
+        &:focus {
+          background-color: @bg-blue-dark;
+        }
+      }
+      >span {
+        display: inline-block;
+        color: @bg-blue-lighter;
+        padding: 7px 15px 7px 24px;
+      }
+    }
+  }
+}
+
+.tiger-app-aside:before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  width: inherit;
+  background-color: inherit;
+  border: inherit;
+  content: "";
+}
+
+.tiger-app-content {
+  margin-left: 175px;
+  min-width: 1024px;
+  height: 100%;
+}
+
+.tiger-app-content:before,
+.tiger-app-content:after {
+  display: table;
+  content: " ";
+}
+
+.tiger-app-content:after {
+  clear: both;
+}
+
+.tiger-app-content-body {
+  float: left;
+  width: 100%;
+}
+
+.tiger-app-tabs {
+  position: fixed;
+  top: 0;
+  height: 55px;
+  width: 100%;
+  .router-tabs-section {
+    margin-left: 175px;
+    height: 55px;
+    background-color: @bg-grey;
+  }
+}
+
+// icons
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+
+  &.icon-close {
+    .bg-image('../images/icons/icon-close.png');
+    .bg-size(16px, 16px);
+    .bg-repeat();
+    .bg-position();
+  }
+
+  &.icon-check-blue {
+    .bg-image('../images/icons/icon-check-blue.png');
+    .bg-size(16px, 16px);
+    .bg-repeat();
+    .bg-position();
+  }
+
+  &.icon-close-red {
+    .bg-image('../images/icons/icon-close-red.png');
+    .bg-size(16px, 16px);
+    .bg-repeat();
+    .bg-position();
+  }
+}
+
+.active {
+  .icon {
+    &.icon-close {
+      .bg-image('../images/icons/icon-close-active.png');
+    }
+  }
+}
+
+// buttons
+.tiger-btn {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 15px;
+  border-radius: 2px;
+}
+
+.tiger-btn-min-width {
+  min-width: 115px;
+}
+
+.tiger-btn-default {
+  color: @font-black;
+}
+
+.tiger-btn-primary {
+  color: @font-white;
+  background-color: @button-bg-blue;
+  border-color: @border-blue;
+}
+
+.tiger-btn-success {
+  color: @font-white;
+  background-color: @button-bg-green;
+}
+
+.tiger-btn-addon {
+  i {
+    position: relative;
+    float: left;
+    line-height: 20px;
+    margin-left: -4px;
+    margin-right: 12px;
+    text-align: center;
+  }
+}
+
+// links
+.tiger-link {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.tiger-link-primary {
+  color: @font-blue;
+  &:hover, &:focus {
+    color: @font-blue-dark;
+  }
+}
+
+// tabs
+.tiger-tab-underline {
+  .nav-tabs {
+    border-bottom-color: @border-grey-light;
+    >li {
+      margin-bottom: 0;
+      &.active {
+        >a {
+          border: none;
+          border-bottom: 2px solid @border-blue !important;
+          color: @font-blue;
+        }
+      }
+      >a {
+        border: none;
+        line-height: 20px;
+        border-bottom: 2px solid transparent;
+        font-size: 12px;
+        padding: 7px 12px;
+        color: @font-black;
+        &:hover {
+          background-color: @bg-white;
+          color: @font-blue;
+        }
+      }
+    }
+  }
+}
+
+.tiger-tab-btn-group {
+  .nav-tabs {
+    border-bottom: none;
+    >li {
+      margin-left: -1px;
+      margin-bottom: 0;
+      border: 1px solid @border-grey-lighter;
+      min-width: 100px;
+      text-align: center;
+      border-radius: 4px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+      }
+      &:first-child:not(:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &:last-child:not(:first-child) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      &.active {
+        border: 1px solid @border-blue;
+        >a {
+          border: none;
+          color: @font-white;
+          background-color: @bg-blue;
+        }
+      }
+      >a {
+        border: none;
+        line-height: 20px;
+        font-size: 12px;
+        margin-right: 0;
+        border-radius: 0;
+        padding: 7px 12px;
+        color: @font-black;
+      }
+    }
+  }
+}
+
+// datepicker
+.tiger-datepicker-wrapper {
+  strong {
+    font-weight: normal;
+  }
+  small {
+    font-weight: normal;
+  }
+  .tiger-datepicker {
+    margin: 0 5px;
+    .btn-default {
+      border-width: 0;
+      box-shadow: none;
+    }
+    .btn[disabled] {
+      opacity: 0.4
+    }
+    .btn-info {
+      .text-info {
+        color: #fff !important;
+      }
+    }
+  }
+  .dropdown-menu {
+    .btn {
+      font-size: 12px;
+    }
+    font-size: 12px;
+  }
+}
+
+// panel
+.panel-blue {
+  background-color: @panel-bg-blue;
+}
+
+// dialog
+@-webkit-keyframes ngdialog-flyin {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes ngdialog-flyin {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+}
+
+@-webkit-keyframes ngdialog-flyout {
+  0% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+}
+
+@keyframes ngdialog-flyout {
+  0% {
+    opacity: 1;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+}
+
+.ngdialog.tiger-dialog {
+  padding: 0;
+  margin: auto;
+}
+
+.ngdialog.tiger-dialog .ngdialog-overlay{
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.ngdialog.tiger-dialog.ngdialog-closing .ngdialog-content {
+  -webkit-animation: ngdialog-flyout .5s;
+  animation: ngdialog-flyout .5s;
+}
+
+.ngdialog.tiger-dialog .ngdialog-content {
+  -webkit-animation: ngdialog-flyin .5s;
+  animation: ngdialog-flyin .5s;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,.1);
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 450px;
+  height: 300px;
+}
+
+.ngdialog.tiger-dialog .ngdialog-close {
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ngdialog.tiger-dialog .ngdialog-close:before {
+  background: transparent;
+  border-radius: 3px;
+  color: #bbb;
+  content: '\00D7';
+  font-size: 26px;
+  font-weight: 400;
+  height: 30px;
+  line-height: 26px;
+  position: absolute;
+  right: 3px;
+  text-align: center;
+  top: 5px;
+  width: 30px;
+}
+
+.ngdialog.tiger-dialog .ngdialog-close:hover:before,
+.ngdialog.tiger-dialog .ngdialog-close:active:before {
+  color: #777;
+}
+
+.ngdialog.tiger-dialogt .ngdialog-message {
+  margin-bottom: .5em;
+}
+
+.ngdialog.tiger-dialog .ngdialog-input {
+  margin-bottom: 1em;
+}
+
+.ngdialog.tiger-dialog .ngdialog-input textarea,
+.ngdialog.tiger-dialog .ngdialog-input input[type="text"],
+.ngdialog.tiger-dialog .ngdialog-input input[type="password"],
+.ngdialog.tiger-dialog .ngdialog-input input[type="email"],
+.ngdialog.tiger-dialog .ngdialog-input input[type="url"] {
+  background: #fff;
+  border: 0;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0 0 .25em;
+  min-height: 2.5em;
+  padding: .25em .67em;
+  width: 100%;
+}
+
+.ngdialog.tiger-dialog .ngdialog-input textarea:focus,
+.ngdialog.tiger-dialog .ngdialog-input input[type="text"]:focus,
+.ngdialog.tiger-dialog .ngdialog-input input[type="password"]:focus,
+.ngdialog.tiger-dialog .ngdialog-input input[type="email"]:focus,
+.ngdialog.tiger-dialog .ngdialog-input input[type="url"]:focus {
+  -webkit-box-shadow: inset 0 0 0 2px #8dbdf1;
+  box-shadow: inset 0 0 0 2px #8dbdf1;
+  outline: none;
+}
+
+.ngdialog.tiger-dialog .ngdialog-buttons {
+  *zoom: 1;
+}
+
+.ngdialog.tiger-dialog .ngdialog-buttons:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.ngdialog.tiger-dialog .ngdialog-button {
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right;
+  font-family: inherit;
+  font-size: .8em;
+  letter-spacing: .1em;
+  line-height: 1em;
+  margin: 0 0 0 .5em;
+  padding: .75em 2em;
+  text-transform: uppercase;
+}
+
+.ngdialog.tiger-dialog .ngdialog-button:focus {
+  -webkit-animation: ngdialog-pulse 1.1s infinite;
+  animation: ngdialog-pulse 1.1s infinite;
+  outline: none;
+}
+
+@media (max-width: 568px) {
+  .ngdialog.tiger-dialog .ngdialog-button:focus {
+    -webkit-animation: none;
+    animation: none;
+  }
+}
+
+.ngdialog.tiger-dialog .ngdialog-button.ngdialog-button-primary {
+  background: #3288e6;
+  color: #fff;
+}
+
+.ngdialog.tiger-dialog .ngdialog-button.ngdialog-button-secondary {
+  background: #e0e0e0;
+  color: #777;
+}
+
+.ngdialog.tiger-dialog .tiger-dialog-header {
+  line-height: 35px;
+  background-color: @dialog-header-bg-blue;
+  padding: 0 15px;
+  border-bottom: 1px solid @border-grey;
+}
+
+// table
+.tiger-table {
+  >thead {
+    >tr {
+      >th {
+        text-align: center;
+      }
+    }
+  }
+  >tbody {
+    >tr {
+      >td {
+        vertical-align: middle;
+      }
+    }
+  }
+  &.tiger-table-panel {
+    border: 1px solid @border-grey;
+    border-radius: 2px;
+    >thead {
+      background-color: @panel-bg-blue;
+    }
+    >tbody {
+      >tr:nth-child(even) {
+        background-color: @panel-bg-blue;
+      }
+    }
+  }
+}
+
+.tiger-table-option {
+  >tbody {
+    >tr {
+      >td {
+
+      }
+    }
+  }
+}

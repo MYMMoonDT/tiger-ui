@@ -1,0 +1,23 @@
+<div ng-controller="TabController">
+    <div class="padder-md">
+        <h1 class="page-title">标签</h1>
+    </div>
+
+    <div class="padder-md">
+        <h5>标签样式1</h5>
+
+        <uib-tabset class="tiger-tab-underline">
+            <uib-tab ng-repeat="tab in tabs1">
+                <uib-tab-heading>{{tab.title}}</uib-tab-heading>
+            </uib-tab>
+        </uib-tabset>
+
+        <h5 class="m-t">标签样式2</h5>
+
+        <uib-tabset class="tiger-tab-btn-group">
+            <uib-tab ng-repeat="tab in tabs2">
+                <uib-tab-heading>{{tab.title}}</uib-tab-heading>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</div>

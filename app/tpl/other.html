@@ -1,1 +1,10 @@
-OTHER
+<div ng-controller="OtherController">
+    <div class="padder-md">
+        <h1 class="page-title">其他</h1>
+    </div>
+    <div class="padder-md">
+        <h5>提示</h5>
+
+        <uib-alert ng-repeat="alert in alerts" close="closeAlert($index)"><i class="fa fa-warning"></i>&nbsp;&nbsp;{{alert.msg}}</uib-alert>
+    </div>
+</div>

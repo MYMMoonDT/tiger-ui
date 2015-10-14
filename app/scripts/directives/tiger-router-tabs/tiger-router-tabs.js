@@ -19,6 +19,10 @@ angular.module('tigerUI', [])
             return $state.includes(state.name);
         }
 
+        function resizeSlider() {
+
+        }
+
         var ctrl = this,
             tabs = ctrl.tabs = $scope.tabs = [];
 
@@ -51,11 +55,7 @@ angular.module('tigerUI', [])
             tab.$element = element;
             tabs.push(tab);
 
-            /*$timeout(function () {
-                $timeout(function () {
-                    $scope.resizeSlider();
-                }, 0);
-            }, 0);*/
+            resizeSlider();
         };
 
         ctrl.close = function (tab) {
@@ -74,11 +74,7 @@ angular.module('tigerUI', [])
             var index = tabs.indexOf(tab);
             tabs.splice(index, 1);
 
-            /*$timeout(function () {
-                $timeout(function () {
-                    $scope.resizeSlider();
-                }, 0);
-            }, 0);*/
+            resizeSlider();
         };
 
         if(!$scope.routerTabs) {
@@ -150,8 +146,7 @@ angular.module('tigerUI', [])
         ['$rootScope', '$state', '$timeout', '$sessionStorage', '$window',
             function ($rootScope, $state, $timeout, $sessionStorage, $window) {
                 var MIN_WINDOW_WIDTH = 1024,
-                    ASIDE_WIDTH = 200,
-                    BUTTONS_WIDTH = 200;
+                    ASIDE_WIDTH = 175;
 
                 return {
                     restrict: 'EA',
@@ -180,57 +175,19 @@ angular.module('tigerUI', [])
                             }
                         }
 
-                        /*scope.resizeWrapper = function () {
+                        scope.resizeWrapper = function () {
                             var winWidth = angular.element($window).width(),
                                 wrapperMinWidth = MIN_WINDOW_WIDTH - ASIDE_WIDTH,
                                 wrapperWidth = winWidth - ASIDE_WIDTH;
 
                             element.width((wrapperWidth > wrapperMinWidth ? wrapperWidth : wrapperMinWidth));
-                        };
-
-                        scope.resizeSlider = function () {
-                            var winWidth = angular.element($window).width(),
-                                wrapperWidth = winWidth - ASIDE_WIDTH,
-                                tabsWidth = element.find('.tiger-router-tabs').width(),
-                                sliderWidth = wrapperWidth - BUTTONS_WIDTH;
-
-                            sliderWidth = tabsWidth > sliderWidth ? sliderWidth : tabsWidth;
-
-                            element.find('.tiger-router-tabs-slider').width(sliderWidth);
-                            console.log(sliderWidth);
                         };
 
                         angular.element($window).bind('resize', function () {
                             scope.resizeWrapper();
-                            scope.resizeSlider();
                         });
 
-                        scope.resizeWrapper();*/
-
-                        /*scope.resize = function () {
-                            var winWidth = angular.element($window).width(),
-                                wrapperMinWidth = MIN_WINDOW_WIDTH - ASIDE_WIDTH,
-                                wrapperWidth = winWidth - ASIDE_WIDTH;
-
-                            element.width((wrapperWidth > wrapperMinWidth ? wrapperWidth : wrapperMinWidth));
-
-                            $timeout(function () {
-                                $timeout(function () {
-                                    var tabsWidth = element.find('.tiger-router-tabs').width(),
-                                        sliderWidth = wrapperWidth - BUTTONS_WIDTH;
-
-                                    sliderWidth = tabsWidth > sliderWidth ? sliderWidth : tabsWidth;
-
-                                    element.find('.tiger-router-tabs-slider').width(sliderWidth);
-                                }, 0);
-                            }, 0);
-                        };
-
-                        angular.element($window).bind('resize', function () {
-                            scope.resize();
-                        });
-
-                        scope.resize();*/
+                        scope.resizeWrapper();
                     }
                 };
             }
