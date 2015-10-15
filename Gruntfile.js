@@ -5,7 +5,9 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
 
     // Automatically load required Grunt tasks
-    require('jit-grunt')(grunt);
+    require('jit-grunt')(grunt, {
+        ngtemplates: 'grunt-angular-templates'
+    });
 
     // Configurable paths for the application
     var appConfig = {
@@ -87,7 +89,7 @@ module.exports = function (grunt) {
                     {
                         dot: true,
                         src: [
-                            '<%= tiger.app %>/dist'
+                            '<%= tiger.dist %>/**/*'
                         ]
                     }
                 ]
@@ -103,7 +105,9 @@ module.exports = function (grunt) {
                         cwd: '<%= tiger.app %>',
                         dest: '<%= tiger.dist %>',
                         src: [
-                            'styles/**/*.css'
+                            'styles/**/*.css',
+                            'scripts/directives/tiger-router-tabs/*.{css,js,html}',
+                            'scripts/directives/tiger-datepicker/*.{css,js,html}'
                         ]
                     }
                 ]
@@ -121,6 +125,37 @@ module.exports = function (grunt) {
                     ext: '.min.css'
                 }]
             }
+        },
+
+        concat: {
+            tigerRouterTabs: {
+                src: [
+                    '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs.js',
+                    '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs-tpl.js'
+                ],
+                dest: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs-min.js'
+            },
+            tigerDatePicker: {
+                src: [
+                    '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker.js',
+                    '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker-tpl.js'
+                ],
+                dest: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker-min.js'
+            }
+        },
+
+        ngtemplates: {
+            options: {
+                module: 'tigerUI'
+            },
+            tigerRouterTabs: {
+                src: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/*.html',
+                dest: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs-tpl.js'
+            },
+            tigerDatePicker: {
+                src: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/*.html',
+                dest: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker-tpl.js'
+            }
         }
     });
 
@@ -134,6 +169,8 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'copy:dist',
-        'cssmin:dist'
+        'cssmin:dist',
+        'ngtemplates',
+        'concat'
     ]);
 };
