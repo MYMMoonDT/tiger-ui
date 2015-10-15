@@ -67,7 +67,13 @@ angular.module('tigerUI')
                 .state('app.list', {
                     label: '列表',
                     url: '/list',
-                    templateUrl: 'tpl/list.html'
+                    templateUrl: 'tpl/list.html',
+                    resolve: {
+                        deps: ['routerTabs', '$ocLazyLoad',
+                            function( routerTabs, $ocLazyLoad ){
+                                return $ocLazyLoad.load('scripts/controllers/list.js');
+                            }]
+                    }
                 })
                 .state('app.other', {
                     label: '其他',

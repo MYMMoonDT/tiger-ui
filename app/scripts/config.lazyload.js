@@ -2,7 +2,11 @@
 
 angular.module('tigerUI')
     .constant('JQ_CONFIG', {
-        slimScroll: ['../bower_components/slimscroll/jquery.slimscroll.min.js']
+        slimScroll: ['../bower_components/slimscroll/jquery.slimscroll.min.js'],
+        slider: [
+            '../bower_components/bootstrap-slider/bootstrap-slider.js',
+            '../bower_components/bootstrap-slider/slider.css'
+        ]
     })
     // oclazyload config
     .config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
@@ -32,6 +36,13 @@ angular.module('tigerUI')
                     name: 'ngDialog',
                     files: [
                         '../bower_components/ng-dialog/js/ngDialog.js',
+                        '../bower_components/ng-dialog/css/ngDialog.css'
+                    ]
+                },
+                {
+                    name: 'slider',
+                    files: [
+                        '../bower_components/boot/js/ngDialog.js',
                         '../bower_components/ng-dialog/css/ngDialog.css'
                     ]
                 }

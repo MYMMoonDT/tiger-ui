@@ -2110,8 +2110,15 @@ a.list-group-item.hover {
   border-top-width: 0;
   border-radius: 0 0 2px 2px;
 }
+.pagination {
+  margin: 5px 0;
+}
+.pagination > li.active > a {
+  background-color: #0471aa;
+}
 .pagination > li > a {
   border-color: #dee5e7;
+  color: #575757;
 }
 .pagination > li > a:hover,
 .pagination > li > a:focus {
@@ -2140,7 +2147,7 @@ a.list-group-item.hover {
   border-radius: 2px 2px 0 0;
 }
 .panel-default .panel-heading {
-  background-color: #f6f8f8;
+  background-color: #ebeef3;
 }
 .panel-heading.no-border {
   margin: -1px -1px 0 -1px;
@@ -2311,6 +2318,105 @@ pre {
   position: absolute;
   left: 50%;
   top: 50%;
+}
+.slider {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+.slider.slider-horizontal {
+  width: 210px;
+  height: 20px;
+}
+.slider.slider-horizontal .slider-track {
+  height: 8px;
+  width: 100%;
+  margin-top: -2px;
+  top: 50%;
+  left: 0;
+}
+.slider.slider-horizontal .slider-selection {
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+.slider.slider-horizontal .slider-handle {
+  margin-left: -10px;
+  margin-top: -8px;
+}
+.slider.slider-horizontal .slider-handle.triangle {
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  border-width: 0 10px 10px 10px;
+  width: 0;
+  height: 0;
+  border-bottom-color: #8ec165;
+  margin-top: 0;
+}
+.slider.slider-vertical {
+  height: 210px;
+  width: 20px;
+}
+.slider.slider-vertical .slider-track {
+  width: 4px;
+  height: 100%;
+  margin-left: -2px;
+  left: 50%;
+  top: 0;
+}
+.slider.slider-vertical .slider-selection {
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.slider.slider-vertical .slider-handle {
+  margin-left: -10px;
+  margin-top: -10px;
+}
+.slider.slider-vertical .slider-handle.triangle {
+  border-width: 10px 0 10px 10px;
+  width: 1px;
+  height: 1px;
+  border-left-color: #fff;
+  margin-left: 0;
+}
+.slider input {
+  display: none;
+}
+.slider .tooltip-inner {
+  white-space: nowrap;
+}
+.slider-track {
+  position: absolute;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+.slider-selection {
+  position: absolute;
+  background-color: #0471aa;
+  border: 3px solid #0471aa;
+  border-radius: 5px;
+}
+.slider-handle {
+  outline: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-color: rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+.slider-handle.round {
+  border-radius: 20px;
+}
+.slider-handle.triangle {
+  background: transparent none;
 }
 .badge {
   font-size: 10px;
@@ -2793,8 +2899,12 @@ body {
   padding: 0 15px;
   border-bottom: 1px solid #dfe1e6;
 }
+.tiger-table {
+  margin-bottom: 0;
+}
 .tiger-table > thead > tr > th {
   text-align: center;
+  font-weight: normal;
 }
 .tiger-table > tbody > tr > td {
   vertical-align: middle;

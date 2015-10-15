@@ -577,10 +577,12 @@ body {
 
 // table
 .tiger-table {
+  margin-bottom: 0;
   >thead {
     >tr {
       >th {
         text-align: center;
+        font-weight: normal;
       }
     }
   }
@@ -603,13 +605,12 @@ body {
       }
     }
   }
-}
+  &.tiger-table-list {
+    >tbody {
+      >tr {
+        >td {
 
-.tiger-table-option {
-  >tbody {
-    >tr {
-      >td {
-
+        }
       }
     }
   }

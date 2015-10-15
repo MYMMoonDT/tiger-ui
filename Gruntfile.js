@@ -79,6 +79,48 @@ module.exports = function (grunt) {
                     '<%= tiger.app %>/styles/tiger-ui.css': '<%= tiger.app %>/less/tiger-ui.less'
                 }
             }
+        },
+
+        clean: {
+            dist: {
+                files: [
+                    {
+                        dot: true,
+                        src: [
+                            '<%= tiger.app %>/dist'
+                        ]
+                    }
+                ]
+            }
+        },
+
+        copy: {
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= tiger.app %>',
+                        dest: '<%= tiger.dist %>',
+                        src: [
+                            'styles/**/*.css'
+                        ]
+                    }
+                ]
+
+            }
+        },
+
+        cssmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= tiger.dist %>/styles',
+                    src: ['*.css'],
+                    dest: '<%= tiger.dist %>/styles',
+                    ext: '.min.css'
+                }]
+            }
         }
     });
 
@@ -88,4 +130,10 @@ module.exports = function (grunt) {
             'watch'
         ]);
     });
+
+    grunt.registerTask('build', [
+        'clean:dist',
+        'copy:dist',
+        'cssmin:dist'
+    ]);
 };
