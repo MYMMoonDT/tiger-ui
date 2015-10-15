@@ -1,7 +1,7 @@
 angular.module('tigerUI').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('dist/scripts/directives/tiger-datepicker/tiger-datepicker.html',
+  $templateCache.put('scripts/directives/tiger-datepicker/tiger-datepicker.html',
     "<p class=\"input-group tiger-datepicker-wrapper\">\r" +
     "\n" +
     "    <input type=\"text\" class=\"form-control\"\r" +

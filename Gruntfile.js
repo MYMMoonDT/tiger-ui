@@ -149,10 +149,20 @@ module.exports = function (grunt) {
                 module: 'tigerUI'
             },
             tigerRouterTabs: {
+                options: {
+                    url: function (url) {
+                        return url.replace('dist\/', '');
+                    }
+                },
                 src: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/*.html',
                 dest: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs-tpl.js'
             },
             tigerDatePicker: {
+                options: {
+                    url: function (url) {
+                        return url.replace('dist\/', '');
+                    }
+                },
                 src: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/*.html',
                 dest: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker-tpl.js'
             }

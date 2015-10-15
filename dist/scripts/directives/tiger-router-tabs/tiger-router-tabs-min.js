@@ -235,14 +235,14 @@ angular.module('tigerUI', [])
 angular.module('tigerUI').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('dist/scripts/directives/tiger-router-tabs/tiger-router-tab.html',
+  $templateCache.put('scripts/directives/tiger-router-tabs/tiger-router-tab.html',
     "<li ng-transclude class=\"tiger-router-tab\" ng-click=\"select()\" ng-class=\"{'active': active, 'first': first(), 'last': last()}\">\r" +
     "\n" +
     "</li>"
   );
 
 
-  $templateCache.put('dist/scripts/directives/tiger-router-tabs/tiger-router-tabs.html',
+  $templateCache.put('scripts/directives/tiger-router-tabs/tiger-router-tabs.html',
     "<div class=\"tiger-router-tabs-wrapper\">\r" +
     "\n" +
     "    <a class=\"left-angle\" href=\"javascript:void(0);\"><i class=\"fa fa-angle-left\"></i></a>\r" +
