@@ -23,6 +23,18 @@ module.exports = function (grunt) {
 
         // Watches files for changes and runs tasks based on the changed files
         watch: {
+            concat: {
+                files: ['<%= tiger.app %>/scripts/directives/**/*.js'],
+                tasks: ['concat:directives']
+            },
+            html2js: {
+                files: ['<%= tiger.app %>/scripts/directives/**/*.html'],
+                tasks: ['html2js:directives']
+            },
+            all: {
+                files: ['<%= tiger.app %>/scripts/tiger-ui.js', '<%= tiger.app %>/scripts/tiger-tpl.js'],
+                tasks: ['concat:all']
+            },
             less: {
                 files: ['<%= tiger.app %>/less/**/*.less'],
                 tasks: ['less']
@@ -35,6 +47,9 @@ module.exports = function (grunt) {
                     '<%= tiger.app %>/index.html',
                     '<%= tiger.app %>/tpl/**/*.html',
                     '<%= tiger.app %>/scripts/**/*.js',
+                    '!<%= tiger.app %>/scripts/directives/*.js',
+                    '!<%= tiger.app %>/scripts/tiger-tpl.js',
+                    '!<%= tiger.app %>/scripts/tiger-ui.js',
                     '<%= tiger.app %>/styles/**/*.css',
                     '<%= tiger.app %>/images/**/*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
@@ -71,11 +86,6 @@ module.exports = function (grunt) {
 
         // Compile less files
         less: {
-            directives: {
-                files: {
-                    '<%= tiger.app %>/scripts/directives/tiger-router-tabs/tiger-router-tabs.css': '<%= tiger.app %>/less/directives/tiger-router-tabs.less'
-                }
-            },
             serve: {
                 files: {
                     '<%= tiger.app %>/styles/tiger-ui.css': '<%= tiger.app %>/less/tiger-ui.less'
@@ -105,9 +115,8 @@ module.exports = function (grunt) {
                         cwd: '<%= tiger.app %>',
                         dest: '<%= tiger.dist %>',
                         src: [
-                            'styles/**/*.css',
-                            'scripts/directives/tiger-router-tabs/*.{css,js,html}',
-                            'scripts/directives/tiger-datepicker/*.{css,js,html}'
+                            'styles/tiger-ui.css',
+                            'scripts/tiger-ui-tpl.js',
                         ]
                     }
                 ]
@@ -128,43 +137,51 @@ module.exports = function (grunt) {
         },
 
         concat: {
-            tigerRouterTabs: {
-                src: [
-                    '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs.js',
-                    '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs-tpl.js'
-                ],
-                dest: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs-min.js'
+            options: {
+                
             },
-            tigerDatePicker: {
+            directives: {
                 src: [
-                    '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker.js',
-                    '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker-tpl.js'
+                    '<%= tiger.app %>/scripts/directives/tiger-router-tabs/**/*.js',
+                    '<%= tiger.app %>/scripts/directives/tiger-datepicker/**/*.js'
                 ],
-                dest: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker-min.js'
+                dest: '<%= tiger.app %>/scripts/tiger-ui.js'
+            },
+            all: {
+                options: {
+                    banner: 'angular.module("ui.tiger", ["ui.tiger.tpl", "ui.tiger.datepicker", "ui.tiger.routerTabs"]);\n'
+                },
+                src: [
+                    '<%= tiger.app %>/scripts/tiger-tpl.js',
+                    '<%= tiger.app %>/scripts/tiger-ui.js'
+                ],
+                dest: '<%= tiger.app %>/scripts/tiger-ui-tpl.js'
             }
         },
 
-        ngtemplates: {
+        html2js: {
             options: {
-                module: 'tigerUI'
+                base: '<%= tiger.app %>',
+                module: 'ui.tiger.tpl'
             },
-            tigerRouterTabs: {
-                options: {
-                    url: function (url) {
-                        return url.replace('dist\/', '');
-                    }
-                },
-                src: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/*.html',
-                dest: '<%= tiger.dist %>/scripts/directives/tiger-router-tabs/tiger-router-tabs-tpl.js'
-            },
-            tigerDatePicker: {
-                options: {
-                    url: function (url) {
-                        return url.replace('dist\/', '');
-                    }
-                },
-                src: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/*.html',
-                dest: '<%= tiger.dist %>/scripts/directives/tiger-datepicker/tiger-datepicker-tpl.js'
+            directives: {
+                src: [
+                    '<%= tiger.app %>/scripts/directives/tiger-router-tabs/**/*.html',
+                    '<%= tiger.app %>/scripts/directives/tiger-datepicker/**/*.html'
+                ],
+                dest: '<%= tiger.app %>/scripts/tiger-tpl.js'
+            }
+        },
+
+        uglify: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= tiger.dist %>/scripts',
+                    src: ['*.js'],
+                    dest: '<%= tiger.dist %>/scripts',
+                    ext: '.min.js'
+                }]
             }
         }
     });
@@ -180,7 +197,6 @@ module.exports = function (grunt) {
         'clean:dist',
         'copy:dist',
         'cssmin:dist',
-        'ngtemplates',
-        'concat'
+        'uglify:dist'
     ]);
 };

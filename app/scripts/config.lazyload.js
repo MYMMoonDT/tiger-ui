@@ -13,19 +13,6 @@ angular.module('tigerUI')
         $ocLazyLoadProvider.config({
             modules: [
                 {
-                    name: 'tigerRouterTabs',
-                    files: [
-                        '../scripts/directives/tiger-router-tabs/tiger-router-tabs.js',
-                        '../scripts/directives/tiger-router-tabs/tiger-router-tabs.css'
-                    ]
-                },
-                {
-                    name: 'tigerDatePicker',
-                    files: [
-                        '../scripts/directives/tiger-datepicker/tiger-datepicker.js'
-                    ]
-                },
-                {
                     name: 'ui.select',
                     files: [
                         '../bower_components/ui-select/dist/select.min.js',
@@ -36,13 +23,6 @@ angular.module('tigerUI')
                     name: 'ngDialog',
                     files: [
                         '../bower_components/ng-dialog/js/ngDialog.js',
-                        '../bower_components/ng-dialog/css/ngDialog.css'
-                    ]
-                },
-                {
-                    name: 'slider',
-                    files: [
-                        '../bower_components/boot/js/ngDialog.js',
                         '../bower_components/ng-dialog/css/ngDialog.css'
                     ]
                 }

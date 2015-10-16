@@ -1,6 +1,4 @@
-'use strict';
-
-angular.module('tigerUI', [])
+angular.module('ui.tiger.datepicker', [])
     .controller('tigerDatepickerCtrl', ['$scope', 'uibDatepickerPopupConfig', function ($scope, uibDatepickerPopupConfig) {
         $scope.status = {
             opened: false

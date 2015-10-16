@@ -2919,3 +2919,99 @@ body {
 .tiger-table.tiger-table-panel > tbody > tr:nth-child(even) {
   background-color: #ebeef3;
 }
+.tiger-router-tabs-wrapper {
+  padding-top: 20px;
+}
+.tiger-router-tabs-wrapper .left-angle,
+.tiger-router-tabs-wrapper .right-angle,
+.tiger-router-tabs-wrapper .down-angle {
+  border-top: 1px solid #dfe1e6;
+  border-left: 1px solid #dfe1e6;
+  border-right: 1px solid #dfe1e6;
+  line-height: 20px;
+  padding: 7px 12px;
+  font-size: 18px;
+  background-color: #ffffff;
+  border-radius: 4px 4px 0 0;
+  color: #575757;
+}
+.tiger-router-tabs-wrapper .left-angle,
+.tiger-router-tabs-wrapper .down-angle {
+  float: left;
+  margin-left: 10px;
+}
+.tiger-router-tabs-wrapper .right-angle {
+  float: right;
+  margin-right: 10px;
+}
+.tiger-router-tabs-wrapper .down-angle-wrapper {
+  float: left;
+}
+.tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu {
+  left: auto;
+  right: 0;
+  box-shadow: none;
+}
+.tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu .divider {
+  margin: 5px 0;
+}
+.tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu > li > a {
+  line-height: 20px;
+  padding: 5px 15px;
+}
+.tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu > li > a .icon-empty,
+.tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu > li > a .icon-close-red,
+.tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu > li > a .icon-check-blue {
+  margin-right: 10px;
+  vertical-align: middle;
+  margin-top: -2px;
+}
+.tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu > li > a .icon-close {
+  float: right;
+  margin-top: 2px;
+}
+.tiger-router-tabs-wrapper .down-angle {
+  margin-left: 5px;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs-slider {
+  float: left;
+  overflow: hidden;
+  margin-left: 5px;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs {
+  float: left;
+  white-space: nowrap;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs .tiger-router-tab {
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs .tiger-router-tab.first a {
+  padding: 7px 20px;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs .tiger-router-tab.last {
+  margin-right: 0;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs .tiger-router-tab.active a {
+  border-top: 1px solid #0471aa;
+  border-left: 1px solid #0471aa;
+  border-right: 1px solid #0471aa;
+  background-color: #0471aa;
+  color: #ffffff;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs .tiger-router-tab a {
+  border-top: 1px solid #dfe1e6;
+  border-left: 1px solid #dfe1e6;
+  border-right: 1px solid #dfe1e6;
+  line-height: 20px;
+  padding: 7px 8px 7px 20px;
+  background-color: #ffffff;
+  border-radius: 4px 4px 0 0;
+  color: #575757;
+}
+.tiger-router-tabs-wrapper .tiger-router-tabs .tiger-router-tab a .icon-close {
+  float: right;
+  margin-left: 22px;
+  margin-top: 2px;
+}

@@ -14,13 +14,7 @@ angular.module('tigerUI')
                 .state('app', {
                     abstract: true,
                     url: '/app',
-                    templateUrl: 'tpl/app.html',
-                    resolve: {
-                        routerTabs: ['$ocLazyLoad',
-                            function( $ocLazyLoad ){
-                                return $ocLazyLoad.load('tigerRouterTabs');
-                            }]
-                    }
+                    templateUrl: 'tpl/app.html'
                 })
                 .state('app.home', {
                     label: '控制台',
@@ -42,7 +36,7 @@ angular.module('tigerUI')
                     url: '/tab',
                     templateUrl: 'tpl/tab.html',
                     resolve: {
-                        deps: ['routerTabs', '$ocLazyLoad',
+                        deps: ['$ocLazyLoad',
                             function( routerTabs, $ocLazyLoad ){
                                 return $ocLazyLoad.load('scripts/controllers/tab.js');
                             }]
@@ -53,11 +47,10 @@ angular.module('tigerUI')
                     url: '/form',
                     templateUrl: 'tpl/form.html',
                     resolve: {
-                        deps: ['routerTabs', '$ocLazyLoad',
+                        deps: ['$ocLazyLoad',
                             function( routerTabs, $ocLazyLoad ){
                                 return $ocLazyLoad.load([
                                     'ui.select',
-                                    'tigerDatePicker',
                                     'ngDialog',
                                     'scripts/controllers/form.js'
                                 ]);
@@ -69,7 +62,7 @@ angular.module('tigerUI')
                     url: '/list',
                     templateUrl: 'tpl/list.html',
                     resolve: {
-                        deps: ['routerTabs', '$ocLazyLoad',
+                        deps: ['$ocLazyLoad',
                             function( routerTabs, $ocLazyLoad ){
                                 return $ocLazyLoad.load('scripts/controllers/list.js');
                             }]
@@ -80,7 +73,7 @@ angular.module('tigerUI')
                     url: '/other',
                     templateUrl: 'tpl/other.html',
                     resolve: {
-                        deps: ['routerTabs', '$ocLazyLoad',
+                        deps: ['$ocLazyLoad',
                             function( routerTabs, $ocLazyLoad ){
                                 return $ocLazyLoad.load('scripts/controllers/other.js');
                             }]

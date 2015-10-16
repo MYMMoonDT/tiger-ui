@@ -1,6 +1,4 @@
-'use strict';
-
-angular.module('tigerUI', [])
+angular.module('ui.tiger.routerTabs', [])
     .controller('tigerRouterTabsCtrl', ['$scope', '$sessionStorage', '$rootScope', '$state', '$timeout', '$element', function ($scope, $sessionStorage, $rootScope, $state, $timeout, $element) {
         function currentStateExist(state) {
             for(var i = 0; i < $scope.routerTabs.length; i++) {
@@ -232,76 +230,42 @@ angular.module('tigerUI', [])
             }
         };
     }]);
-angular.module('tigerUI').run(['$templateCache', function($templateCache) {
-  'use strict';
+angular.module('ui.tiger.datepicker', [])
+    .controller('tigerDatepickerCtrl', ['$scope', 'uibDatepickerPopupConfig', function ($scope, uibDatepickerPopupConfig) {
+        $scope.status = {
+            opened: false
+        };
 
-  $templateCache.put('scripts/directives/tiger-router-tabs/tiger-router-tab.html',
-    "<li ng-transclude class=\"tiger-router-tab\" ng-click=\"select()\" ng-class=\"{'active': active, 'first': first(), 'last': last()}\">\r" +
-    "\n" +
-    "</li>"
-  );
+        $scope.dateOptions = {
+            showWeeks: false,
+            class: 'tiger-datepicker'
+        };
+        $scope.open = function($event) {
+            $scope.status.opened = true;
+        };
 
+        uibDatepickerPopupConfig.currentText = '今天';
+        uibDatepickerPopupConfig.clearText = '清除';
+        uibDatepickerPopupConfig.closeText = '关闭';
+    }])
+    .directive('tigerDatepicker', function () {
+        return {
+            restrict: 'EA',
+            replace: true,
+            require: ['tigerDatepicker', '^ngModel'],
+            scope: {},
+            controller: 'tigerDatepickerCtrl',
+            templateUrl: 'scripts/directives/tiger-datepicker/tiger-datepicker.html',
+            link: function (scope, el, attrs, ctrls) {
+                var datepickerCtrl = ctrls[0], ngModelCtrl = ctrls[1];
 
-  $templateCache.put('scripts/directives/tiger-router-tabs/tiger-router-tabs.html',
-    "<div class=\"tiger-router-tabs-wrapper\">\r" +
-    "\n" +
-    "    <a class=\"left-angle\" href=\"javascript:void(0);\"><i class=\"fa fa-angle-left\"></i></a>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <div class=\"tiger-router-tabs-slider\">\r" +
-    "\n" +
-    "        <ul class=\"nav tiger-router-tabs\">\r" +
-    "\n" +
-    "            <tiger-router-tab ng-repeat=\"routerTab in routerTabs\" active=\"routerTab.active\">\r" +
-    "\n" +
-    "                <a href=\"javascript:void(0);\"><span>{{routerTab.label}}</span><i ng-show=\"$index > 0\" class=\"icon icon-close\"></i></a>\r" +
-    "\n" +
-    "            </tiger-router-tab>\r" +
-    "\n" +
-    "        </ul>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <div class=\"down-angle-wrapper dropdown\" uib-dropdown>\r" +
-    "\n" +
-    "        <a class=\"down-angle dropdown-toggle\" href=\"javascript:void(0);\" uib-dropdown-toggle><i class=\"fa fa-angle-double-down\"></i></a>\r" +
-    "\n" +
-    "        <ul class=\"dropdown-menu\" uib-dropdown-menu>\r" +
-    "\n" +
-    "            <li ng-click=\"closeAll()\">\r" +
-    "\n" +
-    "                <a href=\"javascript:void(0);\"><i class=\"icon icon-close-red\"></i>关闭所有标签</a>\r" +
-    "\n" +
-    "            </li>\r" +
-    "\n" +
-    "            <li class=\"divider\"></li>\r" +
-    "\n" +
-    "            <li ng-repeat=\"routerTab in routerTabs\" ng-click=\"select(routerTab)\">\r" +
-    "\n" +
-    "                <a href=\"javascript:void(0);\">\r" +
-    "\n" +
-    "                    <i class=\"icon icon-empty\" ng-class=\"{'icon-check-blue': currentStateEqualTo(routerTab)}\"></i>\r" +
-    "\n" +
-    "                    {{routerTab.label}}\r" +
-    "\n" +
-    "                    <i ng-show=\"$index > 0\" class=\"icon icon-close\" ng-click=\"close(routerTab)\"></i>\r" +
-    "\n" +
-    "                </a>\r" +
-    "\n" +
-    "            </li>\r" +
-    "\n" +
-    "        </ul>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <a class=\"right-angle\" href=\"javascript:void(0);\"><i class=\"fa fa-angle-right\"></i></a>\r" +
-    "\n" +
-    "</div>"
-  );
+                ngModelCtrl.$render = function () {
+                    scope.date = ngModelCtrl.$viewValue;
+                };
 
-}]);
+                scope.$watch('date', function () {
+                    ngModelCtrl.$setViewValue(scope.date);
+                });
+            }
+        };
+    });

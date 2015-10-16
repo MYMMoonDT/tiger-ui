@@ -8,5 +8,6 @@ angular.module('tigerUI', [
     'ui.bootstrap',
     'ui.jq',
     'ui.load',
-    'oc.lazyLoad'
+    'oc.lazyLoad',
+    'ui.tiger'
 ]);
