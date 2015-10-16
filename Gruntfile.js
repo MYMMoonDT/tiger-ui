@@ -117,6 +117,7 @@ module.exports = function (grunt) {
                         src: [
                             'styles/tiger-ui.css',
                             'scripts/tiger-ui-tpl.js',
+                            'images/**/*.{png,jpg,jpeg,gif,webp,svg}',
                         ]
                     }
                 ]
