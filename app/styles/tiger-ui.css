@@ -2951,6 +2951,7 @@ body {
   left: auto;
   right: 0;
   box-shadow: none;
+  width: 160px;
 }
 .tiger-router-tabs-wrapper .down-angle-wrapper .dropdown-menu .divider {
   margin: 5px 0;
