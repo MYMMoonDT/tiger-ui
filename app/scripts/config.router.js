@@ -37,7 +37,7 @@ angular.module('tigerUI')
                     templateUrl: 'tpl/tab.html',
                     resolve: {
                         deps: ['$ocLazyLoad',
-                            function( routerTabs, $ocLazyLoad ){
+                            function( $ocLazyLoad ){
                                 return $ocLazyLoad.load('scripts/controllers/tab.js');
                             }]
                     }
@@ -48,7 +48,7 @@ angular.module('tigerUI')
                     templateUrl: 'tpl/form.html',
                     resolve: {
                         deps: ['$ocLazyLoad',
-                            function( routerTabs, $ocLazyLoad ){
+                            function( $ocLazyLoad ){
                                 return $ocLazyLoad.load([
                                     'ui.select',
                                     'ngDialog',
@@ -63,7 +63,7 @@ angular.module('tigerUI')
                     templateUrl: 'tpl/list.html',
                     resolve: {
                         deps: ['$ocLazyLoad',
-                            function( routerTabs, $ocLazyLoad ){
+                            function( $ocLazyLoad ){
                                 return $ocLazyLoad.load('scripts/controllers/list.js');
                             }]
                     }
@@ -74,7 +74,7 @@ angular.module('tigerUI')
                     templateUrl: 'tpl/other.html',
                     resolve: {
                         deps: ['$ocLazyLoad',
-                            function( routerTabs, $ocLazyLoad ){
+                            function( $ocLazyLoad ){
                                 return $ocLazyLoad.load('scripts/controllers/other.js');
                             }]
                     }
