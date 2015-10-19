@@ -1,0 +1,30 @@
+<div class="tiger-router-tabs-wrapper">
+    <a class="left-angle" href="javascript:void(0);"><i class="fa fa-angle-left"></i></a>
+
+    <div class="tiger-router-tabs-slider">
+        <ul class="nav tiger-router-tabs">
+            <tiger-router-tab ng-repeat="routerTab in routerTabs" active="routerTab.active">
+                <a href="javascript:void(0);"><span>{{routerTab.label}}</span><i ng-show="$index > 0" class="icon icon-close"></i></a>
+            </tiger-router-tab>
+        </ul>
+    </div>
+
+    <div class="down-angle-wrapper dropdown" uib-dropdown>
+        <a class="down-angle dropdown-toggle" href="javascript:void(0);" uib-dropdown-toggle><i class="fa fa-angle-double-down"></i></a>
+        <ul class="dropdown-menu" uib-dropdown-menu>
+            <li ng-click="closeAll()">
+                <a href="javascript:void(0);"><i class="icon icon-close-red"></i>关闭所有标签</a>
+            </li>
+            <li class="divider"></li>
+            <li ng-repeat="routerTab in routerTabs" ng-click="select(routerTab)">
+                <a href="javascript:void(0);">
+                    <i class="icon icon-empty" ng-class="{'icon-check-blue': currentStateEqualTo(routerTab)}"></i>
+                    {{routerTab.label}}
+                    <i ng-show="$index > 0" class="icon icon-close" ng-click="close(routerTab)"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <a class="right-angle" href="javascript:void(0);"><i class="fa fa-angle-right"></i></a>
+</div>
