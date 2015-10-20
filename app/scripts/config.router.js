@@ -31,10 +31,23 @@ angular.module('tigerUI')
           url: '/widget',
           templateUrl: 'tpl/widget.html'
         })
+        .state('app.tab', {
+          label: 'Tab',
+          url: '/tab',
+          templateUrl: 'tpl/tab.html'
+        })
         .state('app.table', {
           label: 'Table',
           url: '/table',
-          templateUrl: 'tpl/table.html'
+          templateUrl: 'tpl/table.html',
+          controller: 'TableController',
+          resolve: {
+            controller: ['$ocLazyLoad', function($ocLazyLoad) {
+              return $ocLazyLoad.load([
+                'scripts/controllers/table.js',
+              ]);
+            }]
+          }
         })
         .state('app.form', {
           label: 'Form',

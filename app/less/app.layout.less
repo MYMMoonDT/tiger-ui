@@ -92,11 +92,28 @@ body{
 		height: auto;
 	}	
 }
+@media (max-width: 768px) {
+  .app-content-body {
+	min-width: 768px - @app-aside-width;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-content-body {
+	min-width: 768px - @app-aside-width;
+  }
+}
+
+@media (min-width: 992px) {
+  .app-content-body {
+	min-width: 992px - @app-aside-width;
+  }
+}
 
 .app-content-body{
 	padding-bottom: @app-header-height;
 	float: left;
-	width: 100%;
+	//width: 100%;
 }
 
 // footer

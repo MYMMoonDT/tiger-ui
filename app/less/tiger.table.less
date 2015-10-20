@@ -1,0 +1,29 @@
+.tiger-table {
+  margin-bottom: 0;
+  >thead {
+    >tr {
+      >th {
+        text-align: center;
+      }
+    }
+  }
+  >tbody {
+    >tr {
+      >td {
+        vertical-align: middle;
+      }
+    }
+  }
+  &.tiger-table-panel {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    >thead {
+      background-color: #ebeef3;
+    }
+    >tbody {
+      >tr:nth-child(even) {
+        background-color: #ebeef3;
+      }
+    }
+  }
+}

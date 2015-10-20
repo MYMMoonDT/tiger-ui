@@ -44,9 +44,6 @@ angular.module('ui.routertabs', [])
 
         $scope.routerTabs.splice(index, 1);
 
-        resizeSlider();
-        removeSliderTab();
-
         if(currentTab.active) {
           $state.go(previousTab.name);
         }
@@ -68,7 +65,6 @@ angular.module('ui.routertabs', [])
     if(!$scope.routerTabs) {
       $scope.routerTabs = $sessionStorage.routerTabs || [];
     }
-
     if($scope.routerTabs.length == 0) {
       var home = {
         label: '控制台',
@@ -84,6 +80,10 @@ angular.module('ui.routertabs', [])
       }
     }
 
+    $scope.$watchCollection('routerTabs', function () {
+      resizeSlider();
+    });
+
     $scope.currentTabActive = function (routerTab) {
       return $state.includes(routerTab.name);
     };
@@ -95,8 +95,6 @@ angular.module('ui.routertabs', [])
             label: toState.label,
             name: toState.name
           });
-          resizeSlider();
-          addSliderTab();
         }
       }
 
@@ -161,9 +159,6 @@ angular.module('ui.routertabs', [])
 
       $scope.routerTabs.splice(index, 1);
 
-      resizeSlider();
-      removeSliderTab();
-
       if(currentTab.active) {
         $state.go(previousTab.name);
       }
@@ -174,8 +169,6 @@ angular.module('ui.routertabs', [])
      */
     $scope.closeAll = function () {
       $scope.routerTabs = $scope.routerTabs.slice(0, 1);
-      resizeSlider();
-      removeSliderAllTab();
 
       $state.go($scope.routerTabs[0].name);
     };
@@ -208,63 +201,31 @@ angular.module('ui.routertabs', [])
      */
     function resizeSlider() {
       var length = $scope.routerTabs.length,
-        width = length * (TAB_WIDTH + MARGIN_WIDTH) - MARGIN_WIDTH;
-      $element.find('.routertabs-slider').width(width);
+        sliderWidth = length * (TAB_WIDTH + MARGIN_WIDTH) - MARGIN_WIDTH;
+      $element.find('.routertabs-slider').width(sliderWidth);
+
+      return sliderWidth;
     }
-
-    /**
-     * tab添加到slider
-     */
-    function addSliderTab() {
-      var wrapperWidth = $element.find('.routertabs-slider-wrapper').width(),
-        sliderWidth = $element.find('.routertabs-slider').width(),
-        marginLeft = parseInt($element.find('.routertabs-slider').css('margin-left'));
-
-      if((-marginLeft + wrapperWidth) < sliderWidth) {
-        marginLeft = -(sliderWidth - wrapperWidth);
-        $element.find('.routertabs-slider').css('margin-left', marginLeft + 'px');
-      }
-    }
-
-    /**
-     * tab从slider移除
-     */
-    function removeSliderTab() {
-
-    }
-
-    /**
-     * 所有tab从slider移除
-     */
-    function removeSliderAllTab() {
-      $element.find('.routertabs-slider').css('margin-left', 0 + 'px');
-    }
-
 
     /**
      * 根据当前state调整slider
      */
     function currentSliderTab() {
-      var index = 0,
-        wrapperWidth = $element.find('.routertabs-slider-wrapper').width(),
+      var index = 0, indexWidth = 0,
+        wrapperWidth = parseInt($element.find('.routertabs-slider-wrapper').css('max-width'));
+        sliderWidth = resizeSlider(),
         marginLeft = parseInt($element.find('.routertabs-slider').css('margin-left'));
 
       for(index = 0; index < $scope.routerTabs.length; index++) {
         if($state.current.name == $scope.routerTabs[index].name) break;
       }
 
-      if(((index) * MARGIN_WIDTH + (index + 1) * TAB_WIDTH - marginLeft) > wrapperWidth) {
-        marginLeft = -Math.abs(wrapperWidth - ((index) * MARGIN_WIDTH + (index + 1) * TAB_WIDTH));
-        $element.find('.routertabs-slider').css('margin-left', marginLeft + 'px');
-      }
+      indexWidth = (index + 1) * (TAB_WIDTH + MARGIN_WIDTH) - MARGIN_WIDTH;
+      marginLeft = indexWidth > wrapperWidth ? wrapperWidth - indexWidth : 0;
 
-      if((-marginLeft) > index * (MARGIN_WIDTH + TAB_WIDTH)) {
-        marginLeft = -(index * (MARGIN_WIDTH + TAB_WIDTH));
-        $element.find('.routertabs-slider').css('margin-left', marginLeft + 'px');
-      }
+      $element.find('.routertabs-slider').css('margin-left', marginLeft + 'px');
     }
 
-    resizeSlider();
     currentSliderTab();
   }])
   .directive('uiRoutertabs', ['$rootScope',
@@ -286,14 +247,14 @@ angular.module('ui.routertabs', [])
                 '</ui-routertab>',
               '</ul>',
             '</div>',
-            '<div class="pull-left clearfix dropdown" dropdown>',
-              '<a class="down-angle dropdown-toggle" dropdown-toggle><i class="fa fa-angle-double-down"></i></a>',
-              '<ul class="dropdown-menu" dropdown-menu>',
+            '<div class="pull-left clearfix dropdown" uib-dropdown>',
+              '<a class="down-angle dropdown-toggle" uib-dropdown-toggle><i class="fa fa-angle-double-down"></i></a>',
+              '<ul class="dropdown-menu" uib-dropdown-menu>',
                 '<li ng-click="closeAll()"><a><i class="fa fa-times text-danger icon-left"></i>关闭所有标签</a></li>',
                 '<li class="divider"><li>',
                 '<li ng-click="select(routerTab)" ng-repeat="routerTab in routerTabs">',
                   '<a>',
-                    '<i ng-class="{\'fa-check\': currentTabActive(routerTab)}" class="fa text-info icon-left"></i><span class="text-ellipsis">{{routerTab.label}}</span>',
+                    '<i ng-class="{\'fa-check\': currentTabActive(routerTab)}" class="fa text-primary icon-left"></i><span class="text-ellipsis">{{routerTab.label}}</span>',
                     '<i ng-show="$index > 0" class="fa fa-times icon-right" ng-click="close(routerTab)"></i>',
                   '</a>',
                 '<li>',
