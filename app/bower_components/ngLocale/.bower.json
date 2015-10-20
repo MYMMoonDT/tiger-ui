@@ -1,0 +1,13 @@
+{
+  "name": "ngLocale",
+  "homepage": "https://github.com/diguinhorocks/ngLocale",
+  "_release": "fcd907e8e6",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fcd907e8e6dd672ba2e80620984ae6c16df1c148"
+  },
+  "_source": "git://github.com/diguinhorocks/ngLocale.git",
+  "_target": "*",
+  "_originalSource": "ngLocale"
+}
