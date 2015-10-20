@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                 tasks: ['less']
             },
             concat: {
-                files: ['<%= tiger.app %>/scripts/directives/**/*.js'],
+                files: ['<%= tiger.app %>/scripts/directives/**/*.js', '<%= tiger.app %>/scripts/services/**/*.js'],
                 tasks: ['concat:serve']
             },
             livereload: {
@@ -124,6 +124,7 @@ module.exports = function (grunt) {
             },
             serve: {
                 src: [
+                    '<%= tiger.app %>/scripts/services/**/*.js',
                     '<%= tiger.app %>/scripts/directives/**/*.js'
                 ],
                 dest: '.tmp/scripts/tiger-ui.js'
