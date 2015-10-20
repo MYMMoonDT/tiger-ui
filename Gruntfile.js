@@ -54,7 +54,7 @@ module.exports = function (grunt) {
                         return [
                             connect().use(
                                 '/bower_components',
-                                connect.static('./bower_components')
+                                connect.static('./<%= tiger.app %>/bower_components')
                             ),
                             connect().use(
                                 '/<%= tiger.app %>/styles',
