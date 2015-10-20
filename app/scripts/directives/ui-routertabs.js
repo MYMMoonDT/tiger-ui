@@ -212,7 +212,7 @@ angular.module('ui.routertabs', [])
      */
     function currentSliderTab() {
       var index = 0, indexWidth = 0,
-        wrapperWidth = parseInt($element.find('.routertabs-slider-wrapper').css('max-width'));
+        wrapperWidth = parseInt($element.find('.routertabs-slider-wrapper').css('max-width')),
         sliderWidth = resizeSlider(),
         marginLeft = parseInt($element.find('.routertabs-slider').css('margin-left'));
 
