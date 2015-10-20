@@ -1,3 +1,3 @@
 # tiger-ui
 
-You can view it [demo](http://mymmoondt.github.io/tiger-ui) : [http://mymmoondt.github.io/tiger-ui](http://mymmoondt.github.io/tiger-ui)
+Demo: (http://mymmoondt.github.io/tiger-ui/app/index.html) : [http://mymmoondt.github.io/tiger-ui/app/index.html](http://mymmoondt.github.io/tiger-ui/app/index.html)
