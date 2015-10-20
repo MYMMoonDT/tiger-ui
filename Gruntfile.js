@@ -25,6 +25,10 @@ module.exports = function (grunt) {
                 files: ['<%= tiger.app %>/less/**/*.less'],
                 tasks: ['less']
             },
+            concat: {
+                files: ['<%= tiger.app %>/scripts/directives/**/*.js'],
+                tasks: ['concat:serve']
+            },
             livereload: {
                 options: {
                     livereload: '<%= connect.options.livereload %>'
@@ -74,6 +78,56 @@ module.exports = function (grunt) {
                     '<%= tiger.app %>/styles/tiger-ui.css': '<%= tiger.app %>/less/tiger-ui.less'
                 }
             }
+        },
+
+        clean: {
+            dist: {
+                files: [
+                    {
+                        dot: true,
+                        src: [
+                            '<%= tiger.dist %>/**/*',
+                        ]
+                    }
+                ]
+            }
+        },
+
+        copy: {
+            dist: {
+                files: [
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '<%= tiger.app %>',
+                        dest: '<%= tiger.dist %>',
+                        src: [
+                            'styles/**/*.css'
+                        ]
+                    },
+                    {
+                        expand: true,
+                        dot: true,
+                        cwd: '.tmp',
+                        dest: '<%= tiger.dist %>',
+                        src: [
+                            'scripts/**/*.js'
+                        ]
+                    }
+                ]
+            }
+        },
+
+        concat: {
+            options: {
+                separator: '\n\n'
+            },
+            serve: {
+                src: [
+                    '<%= tiger.app %>/scripts/directives/**/*.js'
+                ],
+                dest: '.tmp/scripts/tiger-ui.js'
+            }
         }
     });
 
@@ -81,6 +135,15 @@ module.exports = function (grunt) {
         grunt.task.run([
             'connect:livereload',
             'watch'
+        ]);
+    });
+
+    grunt.registerTask('dist', function () {
+        grunt.task.run([
+            'clean:dist',
+            'less',
+            'concat:serve',
+            'copy:dist'
         ]);
     });
 };
