@@ -5,7 +5,7 @@
     "OliverBi <bixiaodong1990@gmail.com>"
   ],
   "appPath": "app",
-  "devDependencies": {
+  "dependencies": {
     "angular": "~1.4.7",
     "angular-bootstrap": "~0.14.2",
     "angular-resource": "~1.4.7",
