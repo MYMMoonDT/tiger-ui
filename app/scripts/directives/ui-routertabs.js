@@ -97,6 +97,12 @@ angular.module('ui.routertabs', [])
             params: toParams,
             name: toState.name
           });
+        }else{
+          for(var i = 0; i < $scope.routerTabs.length; i++) {
+            if(toState.name == $scope.routerTabs[i].name) {
+              $scope.routerTabs[i].params = toParams;
+            }
+          }
         }
       }
 
