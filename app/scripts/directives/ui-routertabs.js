@@ -27,7 +27,7 @@ angular.module('ui.routertabs', [])
       }
 
       if(!$state.is(routerTab.name)) {
-        $state.go(routerTab.name);
+        $state.go(routerTab.name, routerTab.params);
       }
     };
 
@@ -45,7 +45,7 @@ angular.module('ui.routertabs', [])
         $scope.routerTabs.splice(index, 1);
 
         if(currentTab.active) {
-          $state.go(previousTab.name);
+          $state.go(previousTab.name, routerTab.params);
         }
       });
     };
@@ -75,7 +75,8 @@ angular.module('ui.routertabs', [])
       if($state.current.name != home.name) {
         $scope.routerTabs.push({
           label: $state.current.label,
-          name: $state.current.name
+          name: $state.current.name,
+          params: null
         });
       }
     }
@@ -93,6 +94,7 @@ angular.module('ui.routertabs', [])
         if(!currentStateExist(toState)) {
           $scope.routerTabs.push({
             label: toState.label,
+            params: toParams,
             name: toState.name
           });
         }
@@ -144,7 +146,7 @@ angular.module('ui.routertabs', [])
       routerTab.active = true;
 
       if(!$state.is(routerTab.name)) {
-        $state.go(routerTab.name);
+        $state.go(routerTab.name, routerTab.params);
       }
     };
 
