@@ -45,7 +45,7 @@ angular.module('ui.routertabs', [])
         $scope.routerTabs.splice(index, 1);
 
         if(currentTab.active) {
-          $state.go(previousTab.name, routerTab.params);
+          $state.go(previousTab.name, previousTab.params);
         }
       });
     };
