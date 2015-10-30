@@ -604,7 +604,7 @@ angular.module('ui.routertabs', [])
   })
 
   .service('uiRoutertabService', ['$rootScope', '$state', function ($rootScope, $state) {
-    this.leaveCurrentPage = function () {
+    this.leaveCurrentPage = function (state) {
       var index = -1, currentTab, previousTab;
 
       for(var i  = 0; i < $rootScope.routerTabs.length; i++) {
@@ -620,7 +620,11 @@ angular.module('ui.routertabs', [])
       $rootScope.routerTabs.splice(index, 1);
 
       if (currentTab.active) {
-        $state.go(previousTab.name, previousTab.params);
+        if(state) {
+          $state.go(state.name, state.params);
+        }else{
+          $state.go(previousTab.name, previousTab.params);
+        } 
       }
     };
   }]);
