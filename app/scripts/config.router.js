@@ -24,7 +24,15 @@ angular.module('tigerUI')
         .state('app.button', {
           label: 'Button',
           url: '/button',
-          templateUrl: 'tpl/button.html'
+          templateUrl: 'tpl/button.html',
+          controller: 'ButtonController',
+          resolve: {
+            controller: ['$ocLazyLoad', function($ocLazyLoad) {
+              return $ocLazyLoad.load([
+                'scripts/controllers/button.js',
+              ]);
+            }]     
+          }
         })
         .state('app.widget', {
           label: 'Widget',

@@ -1,5 +1,5 @@
 angular.module('ui.routertabs', [])
-  .controller('uiRoutertabsCtrl', ['$scope', '$state', '$sessionStorage', '$element', function ($scope, $state, $sessionStorage, $element) {
+  .controller('uiRoutertabsCtrl', ['$scope', '$state', '$sessionStorage', '$element', '$rootScope', function ($scope, $state, $sessionStorage, $element, $rootScope) {
     var TAB_WIDTH = 110, MARGIN_WIDTH = 5;
 
     var ctrl = this,
@@ -63,7 +63,7 @@ angular.module('ui.routertabs', [])
      * 初始化routerTabs数组
      */
     if(!$scope.routerTabs) {
-      $scope.routerTabs = $sessionStorage.routerTabs || [];
+      $rootScope.routerTabs = $scope.routerTabs = $sessionStorage.routerTabs || [];
     }
     if($scope.routerTabs.length == 0) {
       var home = {
@@ -168,7 +168,7 @@ angular.module('ui.routertabs', [])
       $scope.routerTabs.splice(index, 1);
 
       if(currentTab.active) {
-        $state.go(previousTab.name);
+        $state.go(previousTab.name, previousTab.params);
       }
     };
 
@@ -176,9 +176,9 @@ angular.module('ui.routertabs', [])
      * 下拉菜单关闭所有routerTab
      */
     $scope.closeAll = function () {
-      $scope.routerTabs = $scope.routerTabs.slice(0, 1);
+      $rootScope.routerTabs = $scope.routerTabs = $scope.routerTabs.slice(0, 1);
 
-      $state.go($scope.routerTabs[0].name);
+      $state.go($scope.routerTabs[0].name, $scope.routerTabs[0].params);
     };
 
     /**
@@ -330,4 +330,26 @@ angular.module('ui.routertabs', [])
         });
       }
     }
-  });
+  })
+
+  .service('uiRoutertabService', ['$rootScope', '$state', function ($rootScope, $state) {
+    this.leaveCurrentPage = function () {
+      var index = -1, currentTab, previousTab;
+
+      for(var i  = 0; i < $rootScope.routerTabs.length; i++) {
+        if($rootScope.routerTabs[i].name == $state.current.name) {
+          index = i;
+          break;
+        }
+      }
+
+      currentTab = $rootScope.routerTabs[index];
+      previousTab = $rootScope.routerTabs[index - 1];
+
+      $rootScope.routerTabs.splice(index, 1);
+
+      if (currentTab.active) {
+        $state.go(previousTab.name, previousTab.params);
+      }
+    };
+  }]);
