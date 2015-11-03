@@ -4687,3 +4687,33 @@ h1.page-title {
   right: 10px;
   top: 10px;
 }
+.ng-pageslide {
+  background: #eee;
+}
+.ng-pageslide-body-open::before {
+  content: '.';
+  display: block;
+  position: absolute;
+  top: 50px;
+  background-color: #000000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  opacity: 0.5;
+  transition: opacity 1s;
+}
+.ng-pageslide-body-closed::before {
+  transition: opacity 1s;
+  opacity: 0;
+  content: '.';
+  display: block;
+  top: 50px;
+  position: absolute;
+  background-color: #000000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+}

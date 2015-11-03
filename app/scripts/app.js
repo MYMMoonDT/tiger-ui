@@ -11,5 +11,6 @@ angular.module('tigerUI', [
   'ui.load',
   'ui.butterbar',
   'ui.nav',
-  'ui.routertabs'
+  'ui.routertabs',
+  'pageslide-directive'
 ]);

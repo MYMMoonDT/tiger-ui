@@ -7,4 +7,9 @@ app.controller('TableController', ['$scope', function ($scope) {
   $scope.pageChanged = function () {
 
   };
+
+  $scope.checked = false; // This will be binded using the ps-open attribute
+               $scope.toggle = function(){
+                   $scope.checked = !$scope.checked
+               }
 }]);
