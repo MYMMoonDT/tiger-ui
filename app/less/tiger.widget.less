@@ -19,30 +19,31 @@
   }
 }
 
+//popover
 .tiger-popover{
-  width: 300;
   min-height: 55px;
-  padding: 10px;
-  .pop-text{
+  padding: 10px 12px;
+  position: relative;
+  .popover-text{
     float: left;
-    width: 180px;
-    padding-bottom: 5px;
+    padding-right: 60px;
   }
-  .alert-image{
-    margin-top: -35px;
+  .popover-image{
+    position: absolute;
+    top: -30px;
+    right: 10px;
     width:60px;
     height: 80px;
     background: url('../images/popover/mishu.png')
   }
-  .close-icon{
-    margin-top: -15px;
-    margin-right: -13px;
+  .popover-close{
+    position: absolute;
+    top: -8px;
+    right: -8px;
     color:#888;
-  }
-  .close-icon:hover{
-    color: black;
-    cursor: pointer;;
+    cursor: pointer;
+    &:hover {
+      color: #000;
+    }
   }
 }
-
-//slider

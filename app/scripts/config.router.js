@@ -29,7 +29,7 @@ angular.module('tigerUI')
           resolve: {
             controller: ['$ocLazyLoad', function($ocLazyLoad) {
               return $ocLazyLoad.load([
-                'scripts/controllers/button.js',
+                'scripts/controllers/button.js'
               ]);
             }]     
           }
@@ -37,7 +37,15 @@ angular.module('tigerUI')
         .state('app.widget', {
           label: 'Widget',
           url: '/widget',
-          templateUrl: 'tpl/widget.html'
+          templateUrl: 'tpl/widget.html',
+          controller: 'WidgetController',
+          resolve: {
+            controller: ['$ocLazyLoad', function($ocLazyLoad) {
+              return $ocLazyLoad.load([
+                'scripts/controllers/widget.js'
+              ]);
+            }]
+          }
         })
         .state('app.tab', {
           label: 'Tab',
@@ -52,7 +60,7 @@ angular.module('tigerUI')
           resolve: {
             controller: ['$ocLazyLoad', function($ocLazyLoad) {
               return $ocLazyLoad.load([
-                'scripts/controllers/table.js',
+                'scripts/controllers/table.js'
               ]);
             }]
           }

@@ -7,4 +7,17 @@
 
   <h5>提示</h5>
   <uib-alert class="tiger-alert"><i class="fa fa-warning"></i>&nbsp;&nbsp;还没有发送的定时短信都会出现在这里</uib-alert>
+
+  <h5>侧边栏</h5>
+  <button class="button btn btn-primary" ng-click="togglePageSlide()">显示侧边栏</button>
+
+  <div pageslide
+       ps-open="showPageSlide"
+       ps-speed="0.25"
+       ps-size="300px">
+    <div class="wrapper">
+      <button class="button btn btn-primary" ng-click="togglePageSlide()">关闭侧边栏</button>
+    </div>
+  </div>
+
 </div>
