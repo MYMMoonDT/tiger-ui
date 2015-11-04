@@ -4551,6 +4551,31 @@ h1.page-title {
 .tiger-alert.alert-warning {
   color: #f05050;
 }
+.tiger-popover {
+  width: 300;
+  min-height: 55px;
+  padding: 10px;
+}
+.tiger-popover .pop-text {
+  float: left;
+  width: 180px;
+  padding-bottom: 5px;
+}
+.tiger-popover .alert-image {
+  margin-top: -35px;
+  width: 60px;
+  height: 80px;
+  background: url('../images/popover/mishu.png');
+}
+.tiger-popover .close-icon {
+  margin-top: -15px;
+  margin-right: -13px;
+  color: #888;
+}
+.tiger-popover .close-icon:hover {
+  color: black;
+  cursor: pointer;
+}
 @media (max-width: 768px) {
   .ui-routertabs-wrapper {
     min-width: 593px;
@@ -4599,8 +4624,8 @@ h1.page-title {
   margin-right: 10px;
 }
 .ui-routertabs-wrapper .right-angle {
-  float: right;
-  margin-right: 10px;
+  float: left;
+  margin-left: 10px;
 }
 .ui-routertabs-wrapper .down-angle + .dropdown-menu {
   left: auto;

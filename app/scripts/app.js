@@ -12,5 +12,7 @@ angular.module('tigerUI', [
   'ui.butterbar',
   'ui.nav',
   'ui.routertabs',
-  'pageslide-directive'
+  'pageslide-directive',
+  'ngAnimate',
+  'mgcrea.ngStrap'
 ]);
