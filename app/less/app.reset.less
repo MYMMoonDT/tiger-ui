@@ -1,6 +1,6 @@
 // reset
 html {
-  background-color: @body-bg;  
+  background-color: @body-bg;
 }
 body {
   font-family: @font-family-base;
@@ -149,7 +149,7 @@ blockquote{
   border-color: @input-border;
   border-radius: @input-border-radius;
   &,
-  &:focus {    
+  &:focus {
     .box-shadow(none);
   }
   &:focus{
@@ -181,7 +181,7 @@ blockquote{
 }
 
 .list-group{
-  border-radius: @border-radius-base;  
+  border-radius: @border-radius-base;
   &.no-radius {
     .list-group-item{
       border-radius: 0 !important;
@@ -237,7 +237,7 @@ blockquote{
     background-color: @list-group-select-color !important;
     border-color: darken( @list-group-select-color , 5%);
   }
-  
+
   .list-group-alt & {
     &:nth-child(2n+2){
       background-color: rgba(0,0,0,0.02) !important;
@@ -288,14 +288,17 @@ blockquote{
     }
   }
 }
-
 .nav{
   > li{
-    > a{
-      &:hover,
-      &:focus{
-        background-color: @nav-bg;
+    .nav-title{
+      color: @text-muted;
+      font-size: @font-size-xs;
+    }
+    &.active{
+      > a{
+        color: white;
       }
+      background-color: @brand-primary;
     }
   }
   &.nav-lg{
@@ -328,28 +331,19 @@ blockquote{
       border-radius: 20px;
     }
   }
-  .open{
-    > a{
-      &,
-      &:hover,
-      &:focus{
-        background-color: @nav-bg;
-      }
-    }
-  }
 }
 
 .nav-tabs{
   border-color: @border-color;
   > li{
     > a{
-      border-radius: @panel-border-radius @panel-border-radius 0 0;      
+      border-radius: @panel-border-radius @panel-border-radius 0 0;
       border-bottom-color: @border-color;
     }
     &:hover > a,
     &.active > a,
     &.active > a:hover{
-      border-color: @border-color;      
+      border-color: @border-color;
     }
     &.active > a{
       border-bottom-color: #fff !important;
@@ -371,9 +365,9 @@ blockquote{
       }
       &.active{
         > a {
-          border-bottom-color: @brand-info !important;          
+          border-bottom-color: @brand-info !important;
         }
-      }      
+      }
     }
   }
 }
@@ -384,7 +378,7 @@ blockquote{
     padding:15px;
     background-color: #fff;
     border: 1px solid @border-color;
-    border-top-width: 0; 
+    border-top-width: 0;
     border-radius: 0 0 @panel-border-radius @panel-border-radius;
   }
 }
@@ -529,7 +523,7 @@ blockquote{
   > li > a:hover,
   > li > a:focus,
   > .active > a,
-  > .active > a:hover, 
+  > .active > a:hover,
   > .active > a:focus{
     background-image: none;
     filter:none;
@@ -549,7 +543,7 @@ blockquote{
     > a{
       background-color: @brand-light !important;
       color: @text-color;
-    }    
+    }
     > .dropdown-menu {
       display: block;
     }
