@@ -304,6 +304,9 @@ a.list-group-item.hover {
 .nav-tabs {
   border-color: #dee5e7;
 }
+.nav-tabs > li {
+  background-color: #fff !important;
+}
 .nav-tabs > li > a {
   border-radius: 2px 2px 0 0;
   border-bottom-color: #dee5e7;
