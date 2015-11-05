@@ -246,6 +246,9 @@ a.list-group-item.hover {
 .list-group-item > .fa-chevron-right + .badge {
   margin-right: 5px;
 }
+.app-aside {
+  background-color: #fcfcfc;
+}
 .nav-pills.no-radius > li > a {
   border-radius: 0;
 }
@@ -263,7 +266,7 @@ a.list-group-item.hover {
 }
 .nav > li.nav-title:hover,
 .nav > li.nav-title:focus {
-  background-color: white;
+  background-color: none;
 }
 .nav > li:hover,
 .nav > li:focus {
