@@ -290,12 +290,28 @@ blockquote{
 }
 .nav{
   > li{
-    .nav-title{
-      color: @text-muted;
-      font-size: @font-size-xs;
+    &.nav-title{
+      > span{
+        color: @text-muted;
+        font-size: @font-size-xs;
+      }
+      &:hover,
+      &:focus
+      {
+        background-color: white;
+      }
+    }
+    &:hover,
+    &:focus
+    {
+      background-color: @brand-light;
+    }
+    dd{
+      padding: 10px 20px;
+      cursor: pointer;;
     }
     &.active{
-      > a{
+      > dd{
         color: white;
       }
       background-color: @brand-primary;

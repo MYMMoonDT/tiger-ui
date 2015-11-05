@@ -257,14 +257,26 @@ a.list-group-item.hover {
 .nav-pills > li.active > a:active {
   background-color: #19a9d5;
 }
-.nav > li .nav-title {
+.nav > li.nav-title > span {
   color: #98a6ad;
   font-size: 12px;
+}
+.nav > li.nav-title:hover,
+.nav > li.nav-title:focus {
+  background-color: white;
+}
+.nav > li:hover,
+.nav > li:focus {
+  background-color: #edf1f2;
+}
+.nav > li dd {
+  padding: 10px 20px;
+  cursor: pointer;
 }
 .nav > li.active {
   background-color: #008ad0;
 }
-.nav > li.active > a {
+.nav > li.active > dd {
   color: white;
 }
 .nav.nav-lg > li > a {
