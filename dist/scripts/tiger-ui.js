@@ -363,7 +363,7 @@ angular.module('ui.routertabs', [])
     };
 
     $scope.updateTabs = function (event, toState, toParams, fromState, fromParams) {
-      $scope.routerTabs = $sessionStorage.routerTabs ? $sessionStorage.routerTabs : [];
+      $scope.routerTabs = $sessionStorage.routerTabs ? $sessionStorage.routerTabs : $scope.routerTabs;
 
       if(arguments.length > 1) {
         if(!currentStateExist(toState)) {
