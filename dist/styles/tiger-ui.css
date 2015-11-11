@@ -819,14 +819,14 @@ body {
 				padding: 0;
 			}
 		}
-
+		
 	}
 
-	.app-aside-fixed{
+	.app-aside-fixed{		
 		.app-header{
 			.navbar-header{
 				position: fixed;
-			}
+			}			
 		}
 		.aside-wrap{
 			position: fixed;
@@ -888,7 +888,7 @@ body {
 			bottom: 0;
 			z-index: -1;
 			background-color: inherit;
-			border: inherit;
+			border: inherit;			
 		}
 		&.b-l:before{
 			margin-left: -1px;
@@ -1442,7 +1442,7 @@ body {
 			}
 			nav > .nav{
 				float: left;
-			}
+			}			
 			.hidden-folded,
 			.line,
 			.navi-wrap > div{
@@ -1474,7 +1474,7 @@ body {
 						line-height: 40px;
 						width: 40px;
 					}
-					> span.pull-right{
+					> span.pull-right{						
 						position: absolute;
 						bottom: 2px;
 						left: 50%;
@@ -1508,7 +1508,7 @@ body {
 				}
 				.nav-sub-header{
 					display: none !important;
-				}
+				}	
 			}
 			.navi li li a{
 				padding-left: 15px;

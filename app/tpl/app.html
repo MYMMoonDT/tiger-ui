@@ -11,6 +11,26 @@
 <div class="app-content">
   <div ui-routertabs rules="^app"></div>
   <div ui-butterbar></div>
-  <div id="appContentBody" class="app-content-body" ui-view></div>
+  <div class="app-content-body" ui-view="home" ng-show="$state.includes('app.home')">
+    <div class="app-content-body"></div>
+  </div>
+  <div ui-view="button" ng-show="$state.includes('app.button')">
+    <div class="app-content-body"></div>
+  </div>
+  <div ui-view="widget" ng-show="$state.includes('app.widget')">
+    <div class="app-content-body"></div>
+  </div>
+  <div ui-view="tab" ng-show="$state.includes('app.tab')">
+    <div class="app-content-body"></div>
+  </div>
+  <div ui-view="tabItem" ng-show="$state.includes('app.tabItem')">
+    <div class="app-content-body"></div>
+  </div>
+  <div ui-view="table" ng-show="$state.includes('app.table')">
+    <div class="app-content-body"></div>
+  </div>
+  <div ui-view="form" ng-show="$state.includes('app.form')">
+    <div class="app-content-body"></div>
+  </div>
 </div>
 <!-- /content -->

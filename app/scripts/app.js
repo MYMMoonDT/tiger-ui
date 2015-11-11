@@ -13,6 +13,7 @@ angular.module('tigerUI', [
   'ui.nav',
   'ui.routertabs',
   'pageslide-directive',
+  'ct.ui.router.extras',
   'ngAnimate',
   'mgcrea.ngStrap'
 ]);

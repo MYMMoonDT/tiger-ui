@@ -44,6 +44,8 @@ angular.module('ui.routertabs', [])
 
         $scope.routerTabs.splice(index, 1);
 
+        $rootScope.routerTabs = $sessionStorage.routerTabs = $scope.routerTabs;
+
         if(currentTab.active) {
           $state.go(previousTab.name, previousTab.params);
         }
@@ -90,6 +92,8 @@ angular.module('ui.routertabs', [])
     };
 
     $scope.updateTabs = function (event, toState, toParams, fromState, fromParams) {
+      $scope.routerTabs = $sessionStorage.routerTabs;
+
       if(arguments.length > 1) {
         if(!currentStateExist(toState)) {
           $scope.routerTabs.push({
@@ -110,7 +114,7 @@ angular.module('ui.routertabs', [])
         $scope.routerTabs[i].active = currentStateActive($scope.routerTabs[i]);
       }
 
-      $sessionStorage.routerTabs = $scope.routerTabs;
+      $rootScope.routerTabs = $sessionStorage.routerTabs = $scope.routerTabs;
 
       currentSliderTab();
     };
@@ -167,6 +171,8 @@ angular.module('ui.routertabs', [])
 
       $scope.routerTabs.splice(index, 1);
 
+      $rootScope.routerTabs = $sessionStorage.routerTabs = $scope.routerTabs;
+
       if(currentTab.active) {
         $state.go(previousTab.name, previousTab.params);
       }
@@ -177,6 +183,8 @@ angular.module('ui.routertabs', [])
      */
     $scope.closeAll = function () {
       $rootScope.routerTabs = $scope.routerTabs = $scope.routerTabs.slice(0, 1);
+
+      $rootScope.routerTabs = $sessionStorage.routerTabs = $scope.routerTabs;
 
       $state.go($scope.routerTabs[0].name, $scope.routerTabs[0].params);
     };
@@ -332,7 +340,7 @@ angular.module('ui.routertabs', [])
     }
   })
 
-  .service('uiRoutertabService', ['$rootScope', '$state', function ($rootScope, $state) {
+  .service('uiRoutertabService', ['$rootScope', '$state', '$sessionStorage', function ($rootScope, $state, $sessionStorage) {
     this.leaveCurrentPage = function (state) {
       var index = -1, currentTab, previousTab;
 
@@ -348,12 +356,26 @@ angular.module('ui.routertabs', [])
 
       $rootScope.routerTabs.splice(index, 1);
 
+      $sessionStorage.routerTabs = $rootScope.routerTabs;
+
       if (currentTab.active) {
         if(state) {
           $state.go(state.name, state.params);
         }else{
           $state.go(previousTab.name, previousTab.params);
         } 
+      }
+    };
+
+    this.clearAllPage = function (state) {
+      $rootScope.routerTabs = $rootScope.routerTabs.slice(0, 1);
+
+      $sessionStorage.routerTabs = $rootScope.routerTabs;
+
+      if(state) {
+        $state.go(state.name, state.params);
+      }else{
+        $state.go($rootScope.routerTabs[0].name, $rootScope.routerTabs[0].params);
       }
     };
   }]);
