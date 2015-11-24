@@ -649,6 +649,7 @@ body {
 .app-content-body {
   padding-bottom: 50px;
   float: left;
+  width: 100%;
 }
 .app-footer {
   position: absolute;
@@ -819,14 +820,14 @@ body {
 				padding: 0;
 			}
 		}
-		
+
 	}
 
-	.app-aside-fixed{		
+	.app-aside-fixed{
 		.app-header{
 			.navbar-header{
 				position: fixed;
-			}			
+			}
 		}
 		.aside-wrap{
 			position: fixed;
@@ -888,7 +889,7 @@ body {
 			bottom: 0;
 			z-index: -1;
 			background-color: inherit;
-			border: inherit;			
+			border: inherit;
 		}
 		&.b-l:before{
 			margin-left: -1px;
