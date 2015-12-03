@@ -290,10 +290,10 @@ angular.module('ui.routertabs', [])
           var unbindStateChangeCancel = $rootScope.$on('$stateChangeCancel', updateTabs);
           var unbindStateNotFound = $rootScope.$on('$stateNotFound', updateTabs);
 
-          scope.$on('$destroy', unbindStateChangeSuccess);
+          /*scope.$on('$destroy', unbindStateChangeSuccess);
           scope.$on('$destroy', unbindStateChangeError);
           scope.$on('$destroy', unbindStateChangeCancel);
-          scope.$on('$destroy', unbindStateNotFound);
+          scope.$on('$destroy', unbindStateNotFound);*/
 
           /**
            * 调用controller中对应的方法,更新routerTabs中相关tab的状态
