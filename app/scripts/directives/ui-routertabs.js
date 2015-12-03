@@ -81,6 +81,9 @@ angular.module('ui.routertabs', [])
           params: null
         });
       }
+      for(var i = 0; i < $scope.routerTabs.length; i++) {
+        $scope.routerTabs[i].active = currentStateActive($scope.routerTabs[i]);
+      }
     }
 
     $scope.$watchCollection('routerTabs', function () {
